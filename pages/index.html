@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DMI(mkimg)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: rgb(36, 117, 223);
+        }
+
+        .dogname {
+            color: rgb(0, 117, 226);
+            position: absolute;
+            top: 25px;
+            left: 120px;
+            padding: 0 10px;
+            font-size: 160%;
+            font-weight: 500;
+        }
+
+        .dogavatar {
+            width: 80px;
+            /* min-width: 64px; */
+            border-radius: 50%;
+            border-width: 2px;
+            border-color: blue;
+            border: 1px rgba(15, 65, 175, 0.4) solid;
+            transition: all 1s ease 0s;
+            -webkit-transform: all 1s ease 0s;
+        }
+
+        .dogavatar:hover {
+            transform: scale(1.3);
+            border: 2px rgba(74, 65, 175, 0.4) solid;
+            -webkit-transform: scale(1.3);
+
+
+
+        }
+
+        .posttime {
+            background-color: aqua;
+            color: cadetblue;
+            position: absolute;
+            top: 75px;
+            left: 125px;
+
+
+        }
+
+        .card {
+            max-width: 800px;
+            margin-top: 2em;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(250, 250, 250, 0.838);
+            opacity: 1;
+        }
+    </style>
+    <style>
+        .jumbotron {
+            background: rgba(30, 219, 233, 0.26);
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        doginfostr = localStorage.getItem('account');
+        if (doginfostr === null) {
+            window.location.href = '/';
+        }
+        doginfo = JSON.parse(doginfostr);
+
+    </script>
+
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+
+        <h1>DMIs</h1>
+        <h4>Dogcraft Misskey Instance (main)</h4>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="https://m.dogcraft.top">DMI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://m.dogcraft.top">首页</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="https://dogcraft.top/talk/">演示</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.dogcraft.top/talk/post.html">发布</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.dogcraft.top/talk/manage.html">管理</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <div class="card" id='iidog2'>
+        <div id="iidog"></div>
+        <div class="container">
+            <div id="loadm">
+                <input required="required" type="url" class="form-control" v-model="picdog" placeholder="picdog">
+                <br>
+                <button onclick="uploaddog()">“上传”图片</button>
+                <div>
+                    <div id="innf"></div>
+                    <span id="smk"></span>
+                    <ul class="list-group" id="lldog">
+                        <!-- <li class="list-group-item">First item</li>
+                        <li class="list-group-item">Second item</li>
+                        <li class="list-group-item">Third item</li> -->
+                    </ul>
+                </div>
+                <br>
+                <!-- <textarea style="width: 100%" rows="10" required="required" v-model="content" v-on:input="yulanmd"
+                    placeholder="内容"></textarea>
+                <p>{{re}}</p>
+                <button onclick="post()">发帖子</button> -->
+                <div class="container">
+                    <div class='tipianl' id="dkil">
+                    </div>
+                    <!-- <div class="card">
+                        <div id="yulan"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <p>一个简单的html页面，用来添加图片外链功能……</p>
+        </div>
+        
+    </div>
+    <script>
+        doginfo = JSON.parse(doginfostr);
+
+        var Htmldog = `<div class="card-body" id="ddinfo"><img src="${doginfo.avatarUrl}" class="dogavatar"><span class="dogname">${doginfo.name}</span><div class="contain cont"></div></div>`;
+        document.getElementById('iidog').innerHTML = Htmldog;
+        var Htmldog2= '<div class="alert alert-primary alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>正在上传</strong> 请稍后……</div>';
+    </script>
+
+
+
+    <script>
+        var diu = new Vue({
+            el: '#loadm',
+            data: {
+                picdog: "https://www.dogcraft.top/avatar.jpg",
+                content: "",
+                re: ""
+
+            },
+            methods: {
+                yulanmd: function () {
+                    var OutHtml = marked(diu.content);
+
+                    document.getElementById('yulan').innerHTML = OutHtml;
+                }
+            }
+        });
+
+
+    </script>
+
+   
+    <!-- <script>
+        function post() {
+            if (diu.content == "" || diu.avatar == "") {
+                alert("不能为空");
+            } else {
+                $.post("https://apid.dogcraft.top/api/talk/", {
+                    key: deu.apikey,
+                    avatar: diu.avatar,
+                    name: diu.name,
+                    content: diu.content,
+                    time: String(Date.now()),
+                    ua: navigator.userAgent
+                },
+                    function (data, status) {
+                        diu.re = data;
+                        if (data.status == "OK") {
+                            diu.content = '';
+                        }
+                    });
+            }
+
+        }
+
+    </script> -->
+    <script>
+        ApiUrl='https://api.dogcraft.top/mkimg/'
+        async function uploaddog() {
+            doguploaddata = { i: doginfo.token, url: diu.picdog };
+            $('#innf').html(Htmldog2);
+            uiy = await fetch(ApiUrl, {
+                method: 'POST',
+                body: JSON.stringify(doguploaddata),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            });
+            if (uiy.status == 200) {
+                rt = await uiy.json();
+                res_dog = rt.r;
+            } else {
+                res_dog = '接口不对劲';
+            }
+            if (res_dog != 'success') {
+                var Htmldog3 = `<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>错误！</strong> ${res_dog}</div>`;
+                $('#innf').html(Htmldog3);
+
+            } else {
+                var Htmldog4 = `<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>成功！</strong> ID: ${rt.pid}</div>`;
+                $('#innf').html(Htmldog4);
+            }
+        }
+
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="jumbotron text-center " style="margin-bottom:0">
+        <p>
+            <script
+                type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1277995785'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1277995785%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+        </p>
+        <p>© 2021 Dogcraft</p>
+</body>
+
+</html>
