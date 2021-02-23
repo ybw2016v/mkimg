@@ -8,9 +8,7 @@ import uuid
 
 Headers = {'user-agent': 'Dogcraft misskey instance tools (https://m.dogcraft.top) '}
 
-# URL = 'https://a.neko.red/misskey/ec78a76c-3141-4005-b640-a495f68fab7c.png'
-# URL = 'https://sigd.dogcraft.top/img.jpg'
-headers = {'user-agent': 'Dogcraft misskey instance tools (https://m.dogcraft.top) '}
+
 
 # dogfile = r.get(URL,headers=headers, timeout=31)
 # doginfo=dogfile.headers['Content-Type']

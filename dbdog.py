@@ -1,19 +1,5 @@
 import datetime
-#import psycopg2
 from psycopg2.extras import Json
-
-
-#pgdog = psycopg2.connect(
-#        database='misskey', user='misskey', password='dogdogdog', host='192.168.0.112', port=20489)
-# sdo=pgdog.cursor()
-# # sdo.execute("""select * from drive_file where "id" = '8hxypyuf72';""")
-# sdo.execute("""INSERT INTO drive_file VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s );""",lli[0])
-# INSERT INTO authors (name) VALUES (%s)
-# aasd=datetime.datetime.now()
-# lli=[('8hxypyuf79', aasd, '89gargpjc3', 'hello.2heng.xin', '60132b41a0daf71a5feb847ea49b4282', 'cb7063bca3c4f4ce.jpeg', 'image/jpeg', 0, None, Json({'width': 870, 'height': 1884}), False, 'https://s3-hk.2heng.xin/mstdn/media_attachments/files/105/687/095/458/321/702/original/cb7063bca3c4f4ce.jpeg', None, None, 'd7a8d034-aea8-4faf-b0de-01bff076dae0', 'thumbnail-f4147d48-8949-4c7c-8f00-0d48e70b2550', 'webpublic-d785d88e-11c2-43b9-a32a-16836a3d5b00', 'https://s3-hk.2heng.xin/mstdn/media_attachments/files/105/687/095/458/321/702/original/cb7063bca3c4f4ce.jpeg', 'https://s3-hk.2heng.xin/mstdn/media_attachments/files/105/687/095/458/321/702/original/cb7063bca3c4f4ce.jpeg', None, False, True, 'ySLg;JxuRPxuR*t7ay00WBWARjWVRjWB?vj[j?ofWBa{a{_Nfkayofayj[j[8_ayofWVj[ayayI9oKofWBj[ayazt7axofj@ofofj[')]
-
-
-
 
 def write_dog_pic(dogdb,pdog,uidog):
     """

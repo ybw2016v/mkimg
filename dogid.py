@@ -11,4 +11,3 @@ def gen_dog_id():
     strdog=base36.dumps(tdog)
     return strdog+'03'
 
-# print(gen_dog_id())

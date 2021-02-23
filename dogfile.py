@@ -8,61 +8,6 @@ import uuid
 
 Headers = {'user-agent': 'Dogcraft misskey instance tools (https://m.dogcraft.top) '}
 
-# URL = 'https://a.neko.red/misskey/ec78a76c-3141-4005-b640-a495f68fab7c.png'
-# URL = 'https://sigd.dogcraft.top/img.jpg'
-# headers = {'user-agent': 'Dogcraft misskey instance tools (https://m.dogcraft.top) '}
-
-# dogfile = r.get(URL,headers=headers, timeout=31)
-# doginfo=dogfile.headers['Content-Type']
-# doginfos=doginfo.split('/')
-# mdog=hashlib.md5(dogfile.content)
-# dogmd5=mdog.hexdigest()
-# print(dogmd5)
-# if doginfos[0]=='image':
-#     print('是图片')
-#     ftpdog=BytesIO()
-#     ftpdog.write(dogfile.content)
-#     bsdog=blurhash.encode(ftpdog, x_components=7, y_components=7)
-#     print('bs：{}'.format(bsdog))
-#     imgdog=Image.open(ftpdog)
-#     wdog=imgdog.width
-#     hdog=imgdog.height
-#     fomtdog=imgdog.format
-#     doginfod={"width":wdog,"height":hdog}
-#     print(doginfod)
-#     print(fomtdog)
-
-# else:
-#     print(doginfo)
-
-
-# class DogPic(object):
-#     """
-#     图片相关
-#     """
-#     def __init__(self, size, bs, md5dog, formatdog):
-#       self.size = size
-#       self.bs = bs
-#       self.id=gen_dog_id()
-#       self.md5=md5dog
-#       self.name= self.id + str(formatdog).lower()
-
-# def m_dog_file(URL):
-#     """
-#     对URL进行相应的处理
-#     """
-#     headers = {'user-agent': 'Dogcraft misskey instance tools (https://m.dogcraft.top) '}
-#     dogfile = r.get(URL,headers=headers, timeout=121)
-#     doginfo=dogfile.headers['Content-Type']
-#     doginfos=doginfo.split('/')
-
-#     if doginfos[0]=='image'::
-#         print('是图片')
-#         mdog5=hashlib.md5(dogfile.content).hexdigest()
-        
-
-#     pass
-
 
 class DogFile(object):
     """

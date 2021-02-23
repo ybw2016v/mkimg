@@ -1,4 +1,4 @@
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import reqparse , Api, Resource
 from flask import Flask, request
 from flask import jsonify
 import psycopg2
@@ -22,8 +22,6 @@ parser = reqparse.RequestParser()
 parser.add_argument('i', type=str, help='token')
 parser.add_argument('url', type=str, help='url')
 
-# pgdog = psycopg2.connect(
-#         database='misskey', user='misskey', password='dogdogdog', host='192.168.0.112', port=20489)
 pgdog = psycopg2.connect(database=dogdbi[2], user=dogdbi[3],password=dogdbi[4], host=dogdbi[0], port=dogdbi[1])
 
 class imgdog(Resource):
@@ -45,7 +43,6 @@ class imgdog(Resource):
         return {'r':'?'}
 
     def post(self):
-        # dog_json=request.get_json()
         args = parser.parse_args()
         idog = args["i"]
         urldog = args["url"]
@@ -62,7 +59,6 @@ class imgdog(Resource):
             write_dog_pic(pgdog,dogf,iddog)
             return {'r':'success','id':iddog,'pid':dogf.id}
         return {'r':'?'}
-
 
 api.add_resource(imgdog, '/')
 
