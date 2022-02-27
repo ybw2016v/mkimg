@@ -17,7 +17,7 @@ def write_dog_pic(dogdb,pdog,uidog):
     dogtn=pdog.tn
     dogwp=pdog.wp
     dogbs=pdog.bs
-    doglist=(dogid, dogtime, doguserid,None, dogmd5, dogname, dogtype, 0, None, Json(dogsize), False, dogurl, None, None, dogak, dogtn, dogwp, dogurl, dogurl, None, False, True, dogbs)
+    doglist=(dogid, dogtime, doguserid,None, dogmd5, dogname, dogtype, 0, None, Json(dogsize), False, dogurl, None, None, dogak, dogtn, dogwp, dogurl, dogurl, None, False, True, dogbs,None)
     print(doglist)
     dogps=dogdb.cursor()
     dogps.execute("""INSERT INTO drive_file VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s );""",doglist)
@@ -37,14 +37,3 @@ def get_dog_id(dogdb,idog):
     if resdog is not None:
         return resdog[0]
     return None
-
-
-# doguid='89fhzj179y'
-# tt='OZoL7E89P9PB72Mh'
-
-# tt='TFAhiPVjdtCJwJXDFzOTBZF4eLSvf0PZ'
-# uuudidog=DogFile('https://boot-video.xuexi.cn/audio/1005/p/478491f991985def995ae8288af4e38d-c6fe1a0d30104b27b979b11c1d423ed4-1.mp3')
-# write_dog_pic(pgdog,uuudidog,doguid)
-# print(uuudidog.sdk)
-# ssdf=get_dog_id(pgdog,tt)
-# print(ssdf)
