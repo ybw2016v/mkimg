@@ -20,7 +20,7 @@ def write_dog_pic(dogdb,pdog,uidog):
     doglist=(dogid, dogtime, doguserid,None, dogmd5, dogname, dogtype, 0, None, Json(dogsize), False, dogurl, None, None, dogak, dogtn, dogwp, dogurl, dogurl, None, False, True, dogbs,None)
     print(doglist)
     dogps=dogdb.cursor()
-    dogps.execute("""INSERT INTO drive_file VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s );""",doglist)
+    dogps.execute("""INSERT INTO drive_file VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s );""",doglist)
     dogdb.commit()
 
 def get_dog_id(dogdb,idog):
